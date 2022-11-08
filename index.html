@@ -61,7 +61,35 @@
             <a href="ebooks.html" class="btn">Explore Now &#x27F6;</a>
           </div>
           <div class="col-2">
-            <img src="images/header-pic.png" alt="Header Pic" />
+              
+            <video width="430" height="534" controls>
+  <source src="images/header-pic.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+              <audio controls>
+  <source src="images/audio.mp3" type="audio/ogg">
+  Your browser does not support the audio tag.
+</audio>
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
           </div>
         </div>
       </div>
