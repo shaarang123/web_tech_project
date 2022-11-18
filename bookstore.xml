@@ -1,4 +1,5 @@
-<?xml version = "1.0" encoding = "UTF-8" standalone = "yes" ?>
+<?xml version = "1.0"?>
+<?xml-stylesheet type = "text/xsl" href ="style.xsl"?>
 <bookstore>
 	<book category="cooking">
 		<title lang="en">Everyday Italian</title>
@@ -13,14 +14,10 @@
 		<price>29.99</price>
 	</book>
 	<book category="web">
-		<title lang="en">XQuery Kick Start</title>
-		<author>James McGovern</author>
-		<author>Per Bothner</author>
-		<author>Kurt Cagle</author>
-		<author>James Linn</author>
-		<author>Vaidyanathan Nagarajan</author>
-		<year>2003</year>
-		<price>49.99</price>
+		<title lang="en">Let Us C</title>
+		<author>Ramesh Gaonkar</author>
+		<year>2005</year>
+		<price>500.99</price>
 	</book>
 	<book category="web" cover="paperback">
 		<title lang="en">Learning XML</title>
@@ -28,10 +25,28 @@
 		<year>2003</year>
 		<price>39.95</price>
 	</book>
+    <book category="fiction" cover="pdf">
+		<title lang="en">The White Tiger</title>
+		<author>Arvind Adiga</author>
+		<year>2001</year>
+		<price>120.99</price>
+	</book>
     <book category="fiction" cover="hardcover">
-		<title lang="en">Strictly for Cash</title>
-		<author>James Headly Chase</author>
-		<year>1961</year>
-		<price>80.99</price>
+		<title lang="en">Gulliver's Travels</title>
+		<author>Oliver Twist</author>
+		<year>1970</year>
+		<price>400.99</price>
+	</book>
+    <book category="fiction" cover="hardcover">
+		<title lang="en">Candy is Dandy</title>
+		<author>Ogden Nash</author>
+		<year>2013</year>
+		<price>300.00</price>
+	</book>
+	<book category="fiction" cover="paperback">
+		<title lang="en">Percy Jackson</title>
+		<author>Rick Riordan</author>
+		<year>2009</year>
+		<price>150.00</price>
 	</book>
 </bookstore>
