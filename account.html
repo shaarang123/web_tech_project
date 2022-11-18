@@ -150,6 +150,7 @@ function drawHand(ctx, pos, length, width) {
                   <input type="text" placeholder="Username" name="uname" />
                   <span id="uname"></span>
                   <input type="password" placeholder="Password" />
+                  
                   <button type="submit" class="btn">Sign In</button>
                   <a href="">Forgot password</a>
                 </form>
@@ -158,7 +159,19 @@ function drawHand(ctx, pos, length, width) {
                   <input type="text" placeholder="Username" />
                   <input type="email" placeholder="Email" />
                   <input type="password" placeholder="Password" />
-                  <button type="submit" class="btn">Sign Up</button>
+                  <div class="capbox">
+
+                    <div id="CaptchaDiv"></div>
+                    
+                    <div class="capbox-inner">
+                    Type the number:<br>
+                    
+                    <input type="hidden" id="txtCaptcha">
+                    <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
+                    <button type="submit" class="btn" onsubmit="return checkform(this);">Sign Up</button>
+                    </div>
+                    </div>
+                  
                 </form>
               </div>
             </div>
@@ -208,6 +221,51 @@ function drawHand(ctx, pos, length, width) {
         <p class="copyright">Copyright 2020 - EbookStore</p>
       </div>
     </div>
+    <!-------------------Javascript for Captcha       -->
+    <script>
+      function checkform(theform){
+var why = "";
+
+if(theform.CaptchaInput.value == ""){
+why += "- Please Enter CAPTCHA Code.\n";
+}
+if(theform.CaptchaInput.value != ""){
+if(ValidCaptcha(theform.CaptchaInput.value) == false){
+why += "- The CAPTCHA Code Does Not Match.\n";
+}
+}
+if(why != ""){
+alert(why);
+return false;
+}
+}
+
+var a = Math.ceil(Math.random() * 9)+ '';
+var b = Math.ceil(Math.random() * 9)+ '';
+var c = Math.ceil(Math.random() * 9)+ '';
+var d = Math.ceil(Math.random() * 9)+ '';
+var e = Math.ceil(Math.random() * 9)+ '';
+
+var code = a + b + c + d + e;
+document.getElementById("txtCaptcha").value = code;
+document.getElementById("CaptchaDiv").innerHTML = code;
+
+// Validate input against the generated number
+function ValidCaptcha(){
+var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
+var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
+if (str1 == str2){
+return true;
+}else{
+return false;
+}
+}
+
+// Remove the spaces from the entered and generated code
+function removeSpaces(string){
+return string.split(' ').join('');
+}
+    </script>
     <!-- ---------Javascript for toggle menu------------- -->
     <script>
       var MenuItems = document.getElementById("MenuItems");
