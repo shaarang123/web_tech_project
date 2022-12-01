@@ -54,9 +54,80 @@
       <div class="container">
         <div class="row">
           <div class="col-2">
-            <center><canvas id="canvas" width="400" height="400"
+            <centre><canvas id="canvas" width="400" height="400"
 style="background-color:#333">
-              </canvas></center>
+              </canvas></centre>
+<script>
+function verifyDetails() {
+  var unm = document.getElementById("usernm").value;
+  var pw = document.getElementById("pswd").value;
+  var cpw = document.getElementById("cpswd").value;
+  var user = document.getElementById("e").value;
+
+  var reg_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  var reg_username = /^[a-zA-Z]*$/;
+  // var strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})'/;
+  // var mediumPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
+
+
+  // check for valid email address
+      var user2 = document.getElementById("e");
+                   
+  //check for username
+  if(unm == "") {
+    alert("Username Cannot be Empty!");
+    return false;
+  }
+  //check empty password field
+  if(pw == "") {
+    alert ("Password Cannot be Blank!"); 
+    return false;
+  }
+  
+ //minimum password length validation
+  if(pw.length < 8) {
+    alert ("Password Length is too short!");
+    return false;
+  }
+//maximum length of password validation
+  if(pw.length > 15) {
+     alert("Password length must not exceed 15 characters");
+     return false;
+  }
+  if(cpw != pw){
+    alert("Passwords Do Not Match!");
+    return false;
+  }
+  // valid email
+  if (reg_email.test(user)) {
+                return true;
+            }
+            else {
+                user2.style.border = "red solid 3px";
+                return false;
+            }
+  //check for valid username
+    if (reg_username.test(unm)) {
+        return true;
+    } else {
+      alert("Error!");
+      return false;
+    }
+  }
+    //captcha
+    //password strength
+    // if(strongPassword.test(pw)) {
+    //     passw1.style.backgroundColor = "green";
+    //     passw1.textContent = 'Strong';
+    // } else if(mediumPassword.test(pw)) {
+    //     passw1.style.backgroundColor = 'blue';
+    //     passw1.textContent = 'Medium';
+    // } else {
+    //     passw1.style.backgroundColor = 'red';
+    //     passw1.textContent = 'Weak';
+    // }
+</script>
+
 <script>
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
@@ -147,7 +218,7 @@ function drawHand(ctx, pos, length, width) {
                 <hr id="indicator" />
 
                 <form id="signInForm" name="myform">
-                  <input type="text" placeholder="Username" name="uname" />
+                  <input type="text" placeholder="Username" required>
                   <span id="uname"></span>
                   <input type="password" placeholder="Password" />
                   
@@ -155,10 +226,11 @@ function drawHand(ctx, pos, length, width) {
                   <a href="">Forgot password</a>
                 </form>
 
-                <form id="signUpForm">
-                  <input type="text" placeholder="Username" />
-                  <input type="email" placeholder="Email" />
-                  <input type="password" placeholder="Password" />
+                <form id="signUpForm" onsubmit="return verifyDetails()">
+                  <input type="text" placeholder="Username" id = "usernm"/>
+                  <input type="text" placeholder="Email" id = "e"/>
+                  <input type="password" placeholder="Password" id ="pswd"/>
+                  <input type="password" placeholder="Confirm Password" id="cpswd"/>
                   <div class="capbox">
 
                     <div id="CaptchaDiv"></div>
@@ -168,7 +240,7 @@ function drawHand(ctx, pos, length, width) {
                     
                     <input type="hidden" id="txtCaptcha">
                     <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
-                    <button type="submit" class="btn" onsubmit="return checkform(this);">Sign Up</button>
+                    <button type="submit" onsubmit="return checkform(this);" class="btn">Sign Up</button>
                     </div>
                     </div>
                   
@@ -225,7 +297,6 @@ function drawHand(ctx, pos, length, width) {
     <script>
       function checkform(theform){
 var why = "";
-
 if(theform.CaptchaInput.value == ""){
 why += "- Please Enter CAPTCHA Code.\n";
 }
@@ -239,7 +310,6 @@ alert(why);
 return false;
 }
 }
-
 var a = Math.ceil(Math.random() * 9)+ '';
 var b = Math.ceil(Math.random() * 9)+ '';
 var c = Math.ceil(Math.random() * 9)+ '';
@@ -254,9 +324,8 @@ document.getElementById("CaptchaDiv").innerHTML = code;
 function ValidCaptcha(){
 var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
 var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
-if (str1 == str2){
-return true;
-}else{
+if (code != str2){
+alert("Invalid Captcha!");
 return false;
 }
 }
@@ -294,23 +363,6 @@ return string.split(' ').join('');
         signInForm.style.transform = "translateX(0px)";
         indicator.style.transform = "translateX(100px)";
       }
-    </script>
-    <!-- -----------------js for form validation ------------------ -->
-    <script>
-      function formvalidate() {
-        var ptrn = /^([^0-9\W]*)$/;
-        if (ptrn.test(document.myform.uname.value)) {
-          document.getElementById("uname").textContent = "User Name is Valid";
-          document.getElementById("uname").style.background = "#72EF57";
-          document.getElementById("uname").style.fontSize = "12px";
-        } else {
-          document.getElementById("uname").textContent = "User Name is Invalid";
-          document.getElementById("uname").style.background = "#EF6257";
-          document.getElementById("uname").style.fontSize = "12px";
-        }
-      }
-
-      document.myform.uname.addEventListener("blur", formvalidate);
     </script>
   </body>
 </html>
