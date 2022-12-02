@@ -58,7 +58,7 @@
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br />
               Incidunt voluptas, porro nisi beatae inventore consequuntur?
             </p>
-            <a href="ebooks.html" class="btn">Explore Now &#x27F6;</a>
+            <button class = "btn" type = "submit"><a href = "table.html">Get Book Stock Info Here</a></button>
           </div>
           <div class="col-2">
             <video style="padding:20px" width ="100%" autoplay muted loop>
@@ -66,11 +66,14 @@
               </video>
               <audio controls src = "media\audio.mp3" type=audio/mp3>
             </audio>
-                  <button class = "btn" onclick="getLocation()">Try It</button>
+                  <button class = "btn" onclick="getLocation()">Locate me</button>
+                  
 
 <p id="demo"></p>
 
+
 <script>
+
 var x = document.getElementById("demo");
 
 function getLocation() {
@@ -263,6 +266,16 @@ function showPosition(position) {
         </div>
       </div>
     </div>
+
+      
+      
+      
+      </script>
+      <style type="text/css">
+        table, th, td {
+        border: 0px solid black;
+      }
+      </style>
     <!------------------offer ------------>
     <div class="offer">
       <div class="small-container">
@@ -407,6 +420,8 @@ function showPosition(position) {
           <center><canvas id="canvas" width="400" height="400"
 style="background-color:#333">
               </canvas></center>
+              
+<p id="demo"></p>
 <script>
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
