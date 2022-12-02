@@ -66,13 +66,14 @@ function verifyDetails() {
 
   var reg_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   var reg_username = /^[a-zA-Z]+$/;
-  // var strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})'/;
-  // var mediumPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
+  var strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+  var mediumPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,})|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
 
 
   // check for valid email address
       var user2 = document.getElementById("e");
       var unm2 = document.getElementById("usernm");
+      var passw1 = document.getElementById("pswd");
                    
   // check for username
   if(unm == "") {
@@ -115,16 +116,13 @@ function verifyDetails() {
   }
     //captcha
     //password strength
-    // if(strongPassword.test(pw)) {
-    //     passw1.style.backgroundColor = "green";
-    //     passw1.textContent = 'Strong';
-    // } else if(mediumPassword.test(pw)) {
-    //     passw1.style.backgroundColor = 'blue';
-    //     passw1.textContent = 'Medium';
-    // } else {
-    //     passw1.style.backgroundColor = 'red';
-    //     passw1.textContent = 'Weak';
-    // }
+    if(strongPassword.test(pw)) {
+        passw1.style.border = "green solid 3px";
+    } else if(mediumPassword.test(pw)) {
+        passw1.style.border = 'blue solid 3px';
+    } else {
+        passw1.style.border = 'red solid 3px';
+    }
 </script>
 
 <script>
@@ -228,7 +226,7 @@ function drawHand(ctx, pos, length, width) {
                 <form id="signUpForm" onsubmit="return verifyDetails()">
                   <input type="text" placeholder="Username" id = "usernm"/>
                   <input type="text" placeholder="Email" id = "e"/>
-                  <input type="password" placeholder="Password" id ="pswd"/>
+                  <input type="password" pattern ="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title = "Weak Password!" placeholder="Password" id ="pswd" required/>
                   <input type="password" placeholder="Confirm Password" id="cpswd"/>
                   <div class="capbox">
 
