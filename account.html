@@ -18,6 +18,7 @@
   </head>
 
   <body>
+    <script src ="script.js"></script>
     <!------------------ Header ------------------>
     <div class="container">
       <div class="navbar">
@@ -57,73 +58,6 @@
             <centre><canvas id="canvas" width="400" height="400"
 style="background-color:#333">
               </canvas></centre>
-<script>
-function verifyDetails() {
-  var unm = document.getElementById("usernm").value;
-  var pw = document.getElementById("pswd").value;
-  var cpw = document.getElementById("cpswd").value;
-  var user = document.getElementById("e").value;
-
-  var reg_email = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  var reg_username = /^[a-zA-Z]+$/;
-  var strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
-  var mediumPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,})|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))/;
-
-
-  // check for valid email address
-      var user2 = document.getElementById("e");
-      var unm2 = document.getElementById("usernm");
-      var passw1 = document.getElementById("pswd");
-                   
-  // check for username
-  if(unm == "") {
-    alert("Username Cannot be Empty!");
-    return false;
-  }
-  //check empty password field
-  if(pw == "") {
-    alert ("Password Cannot be Blank!"); 
-    return false;
-  }
-  
- //minimum password length validation
-  if(pw.length < 8) {
-    alert ("Password Length is too short!");
-    return false;
-  }
-//maximum length of password validation
-  if(pw.length > 15) {
-     alert("Password length must not exceed 15 characters");
-     return false;
-  }
-  if(cpw != pw){
-    alert("Passwords Do Not Match!");
-    return false;
-  }
-  // valid email
-  if (reg_email.test(user)) {
-            }
-            else {
-                user2.style.border = "red solid 3px";
-                return false;
-            }
-  //check for valid username
-    if (reg_username.test(unm)) {
-    } else {
-      unm2.style.border = "red solid 3px";
-      return false;
-    }
-  }
-    //captcha
-    //password strength
-    if(strongPassword.test(pw)) {
-        passw1.style.border = "green solid 3px";
-    } else if(mediumPassword.test(pw)) {
-        passw1.style.border = 'blue solid 3px';
-    } else {
-        passw1.style.border = 'red solid 3px';
-    }
-</script>
 
 <script>
 var canvas = document.getElementById("canvas");
@@ -213,21 +147,13 @@ function drawHand(ctx, pos, length, width) {
                 <span onclick="signIn()"> Sign In </span>
                 <span onclick="signUp()"> Sign Up </span>
                 <hr id="indicator" />
-
-                <form id="signInForm" name="myform">
+                
+                <div class = "form-container1">
+                <form id="signInForm" name="myform" onsubmit="return checkform(this)">
                   <input type="text" placeholder="Username" required>
                   <span id="uname"></span>
+                  <br>
                   <input type="password" placeholder="Password" />
-                  
-                  <button type="submit" class="btn">Sign In</button>
-                  <a href="">Forgot password</a>
-                </form>
-
-                <form id="signUpForm" onsubmit="return verifyDetails()">
-                  <input type="text" placeholder="Username" id = "usernm"/>
-                  <input type="text" placeholder="Email" id = "e"/>
-                  <input type="password" pattern ="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title = "Weak Password!" placeholder="Password" id ="pswd" required/>
-                  <input type="password" placeholder="Confirm Password" id="cpswd"/>
                   <div class="capbox">
 
                     <div id="CaptchaDiv"></div>
@@ -237,9 +163,24 @@ function drawHand(ctx, pos, length, width) {
                     
                     <input type="hidden" id="txtCaptcha">
                     <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
-                    <button type="submit" onsubmit="return checkform(this);" class="btn">Sign Up</button>
+                    <button type="submit"  class="btn">Sign Up</button>
                     </div>
                     </div>
+                  
+                  <a href="">Forgot password</a>
+                </form>
+              </div>
+              
+                <form id="signUpForm" onsubmit="return verifyDetails()">
+                  <br>
+                  <div class="form-item">
+                  <input type="text" placeholder="Username" id = "usernm"/>
+                  <div class="hint">Username Should Contain Characters Only</div></div>
+                  <input type="text" placeholder="Email" id = "e"/>
+                  <input type="tel" pattern="[0-9]{10}" title="Doesn't contain 10 digits." placeholder="Phone Number" id = "mob"/>
+                  <input type="password" pattern ="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title = "Weak Password!" placeholder="Password" id ="pswd">
+                  <input type="password" placeholder="Confirm Password" id="cpswd"/>
+                  <button type="submit" class="btn">Sign Up</button>
                   
                 </form>
               </div>
@@ -349,17 +290,6 @@ return string.split(' ').join('');
       var signInForm = document.getElementById("signInForm");
       var signUpForm = document.getElementById("signUpForm");
       var indicator = document.getElementById("indicator");
-
-      function signIn() {
-        signUpForm.style.transform = "translateX(300px)";
-        signInForm.style.transform = "translateX(300px)";
-        indicator.style.transform = "translateX(0px)";
-      }
-      function signUp() {
-        signUpForm.style.transform = "translateX(0px)";
-        signInForm.style.transform = "translateX(0px)";
-        indicator.style.transform = "translateX(100px)";
-      }
     </script>
   </body>
 </html>

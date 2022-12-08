@@ -409,7 +409,7 @@ th:last-child {
   height: 400px;
   position: relative;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
   margin: auto;
   box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -568,5 +568,30 @@ form a {
 	width: 105px;
 	}
 
-
+  .hint {
+    content: "asd";
+    opacity: 0;
+    background: #EEE;
+    position: absolute;
+    top: 17px;
+    left: 269px;
+    padding: 7px;
+    border: solid 1px #CCC;
+    font-size: 12px;
+    font-weight: bold;
+    color: #555;
+    border-radius:0 7px 7px 0;
+    transition: opacity 0.3s;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.05);
+  }
+  .form-item {
+    position: relative;
+    padding: 0px;
+  }
+  
+  /* show hints when hover/focus the input */
+  .form-item:hover .hint,
+  input:focus ~ div{
+    opacity: 1;
+  }
 /* --------------------------The End----------------------- */

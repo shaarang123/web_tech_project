@@ -15,9 +15,11 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    
   </head>
 
   <body>
+    <script src = "script.js"></script>
     <!------------------ Header ------------------>
     <div class="header">
       <div class="container">
@@ -67,27 +69,10 @@
               <audio controls src = "media\audio.mp3" type=audio/mp3>
             </audio>
                   <button class = "btn" onclick="getLocation()">Locate me</button>
-                  
-
-<p id="demo"></p>
-
+                  <p id="geo-locate"></p>
 
 <script>
-
-var x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  x.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;
-}
+var x = document.getElementById("geo-locate");
 </script>
           </div>
         </div>
@@ -417,9 +402,10 @@ function showPosition(position) {
         </div>
         <hr />
         <p class="copyright">Copyright 2020 - BookHub</p>
+
           <center><canvas id="canvas" width="400" height="400"
 style="background-color:#333">
-              </canvas></center>
+              
               
 <p id="demo"></p>
 <script>
@@ -503,20 +489,9 @@ function drawHand(ctx, pos, length, width) {
     ctx.rotate(-pos);
 }
 </script>
-
+</canvas></center>
       </div>
     </div>
-    <!-- ---------Javascript for toggle menu------------- -->
-    <script>
-      var MenuItems = document.getElementById("MenuItems");
-      MenuItems.style.maxHeight = "0px";
-      function menutoggle() {
-        if (MenuItems.style.maxHeight == "0px") {
-          MenuItems.style.maxHeight = "200px";
-        } else {
-          MenuItems.style.maxHeight = "0px";
-        }
-      }
-    </script>
+    
   </body>
 </html>
