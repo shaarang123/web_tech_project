@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+       
+    <div ng-controller="countryController">
+        <hr>
+       <center> <table style="margin-top:10px; height: 200px; width: 500px;">              
+            <tr>
+                <th>Book Title</th>
+                <th>Price</th>
+            </tr>
+            <tr ng-repeat="country in countries | orderBy:'name'">
+                <td style="text-align: center;">{{country.name}}</td>
+                <td style="text-align: center;">{{country.capital}}</td>
+            </tr>
+        </table></center>    
+    </div>  
+</body>
+</html>

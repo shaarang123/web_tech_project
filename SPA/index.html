@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="lab7.js"></script>
+<body ng-app="myApp">
+<center>    
+<p><a style="font-size: 100px;" href="#/!">BookStore</a></p>
+
+<a style="font-size: 35px; padding: 30px;" href="#!book-detail">Book Detail</a>
+<a style="font-size: 35px; padding: 30px;" href="#!cart">Cart</a>
+<a style="font-size: 35px; padding: 30px;" href="#!books">Books Table</a>
+<a style="font-size: 35px; padding: 30px;" href="#!search">Search</a>
+</center>
+
+<div ng-view></div>
+
+<script>
+var app = angular.module("myApp", ["ngRoute"]);
+
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "BookStore.htm",
+    })
+    .when("/book-detail", {
+        templateUrl : "book-detail.html",
+        controller : "londonCtrl"
+    })
+    .when("/cart", {
+        templateUrl : "cart.html",
+        controller : "parisCtrl"
+    })
+    .when("/books", {
+        templateUrl : "books.htm",
+        controller : "countryController"
+    })
+    .when("/search", {
+        templateUrl : "test.html",
+        controller : "myCont"
+    });
+});
+app.controller("londonCtrl", function ($scope) {
+    $scope.msg = "These are the book details.";
+});
+app.controller("parisCtrl", function ($scope) {
+    $scope.msg = "This page contains the shopping cart.";
+});
+
+app.controller('countryController', function($scope, $http) {                 
+    $http({
+        method: 'GET',
+        url: 'books.json'
+        })
+        .then(function successCallback(response) {
+            $scope.countries = response.data;
+        }, function errorCallback(response) {
+            console.log('Something went wrong.');
+        }); 
+});
+var myController = function ($scope)
+     {
+        var Employee = [
+          {
+            BookTitle: "Life of Pi",Author: "Yann Martel",Publisher: "P1",StoredAt: "Pune",
+          },
+          {
+               BookTitle: "Strictly for Cash",Author: "James Headly Chase",Publisher: "P2",StoredAt: "Delhi",
+          },
+          {
+               BookTitle: "White Tiger",Author: "Arvind Adiga",Publisher: "P1",StoredAt: "Bengaluru",
+          },
+          {
+               BookTitle: "Gone Girl",Author: "Gillian Flynn",Publisher: "P3",StoredAt: "Nagpur",
+          },
+          {
+               BookTitle: "Candy is Dandy",Author: "Ogden Nash",Publisher: "P3",StoredAt: "Goa",
+          }];
+     $scope.Emp = Employee;
+     };
+app.controller("myCont", myController);
+
+</script>
+
+</body>
+</html>
