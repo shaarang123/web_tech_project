@@ -5,7 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOKSTORE</title>
-    <style>body{
+    <style>
+        a{
+            text-decoration: none;
+            color: grey;
+        }
+        body{
              display: flex;
              flex-direction:column;
              margin:2px;
@@ -13,22 +18,30 @@
              .menu
              {
                 display: flex;
-                height: 30px;
+                height: 63px;
                justify-content: space-around;
-               background-color: red;
+               background-color: grey;
+               font-family: Georgia, 'Times New Roman', Times, serif;
              }
              .menu a{
-                 font-size: 15px;
+                 font-size: 50px;
+                 text-align: center;
                  font-weight: bolder;
                  color:white;
+                 font-family: Georgia, 'Times New Roman', Times, serif;
+                 text-decoration: none;
              }
              body{
-                color: red;
+                color: grey;
+             }
+             h1{
+                font-size: 40px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
              }
     </style>
 </head>
 <body>
-    <center><h1>ONLINE BOOKSTORE</h1></center>
+    <center><h1><a href="https://bookstore-website.s3.ap-south-1.amazonaws.com/eBookStore/index.html">E-BookStore</a></h1></center>
        <div class="menu">
 
            <a href="/add">ADD BOOK</a>
